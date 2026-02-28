@@ -147,7 +147,7 @@ if __name__ == "__main__":
     np.random.seed(42)
     X = np.random.randn(500, 3)
 
-    # True function: y = 3x1 - 2x2 + 0.5x3 + noise
+    # True function: y = 3*x_1 - 2*x_2 + 0.5*x_3 + noise
     y = 3*X[:, 0] - 2*X[:, 1] + 0.5*X[:, 2] + 0.1*np.random.randn(500)
 
     y = y.reshape(-1, 1)  # Important: shape (n_samples, 1)
