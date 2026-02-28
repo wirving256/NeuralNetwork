@@ -168,26 +168,30 @@ class NeuralNetwork:
 if __name__ == "__main__":
     from sklearn.datasets import load_iris
     from sklearn.model_selection import train_test_split
-    from sklearn.preprocessing import StandardScaler
 
     data = load_iris()
     X = data.data
     y = data.target  # integer labels (0,1,2)
 
     # Normalize
-    scaler = StandardScaler()
-    X = scaler.fit_transform(X)
+    scaler = normal_scaler()
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
 
+    scaler = normal_scaler()
+    scaler.fit_params(X_train)
+    X_train = scaler.use_trained(X_train)
+
+    X_test = scaler.use_trained(X_test)
+
     nn = NeuralNetwork([
         Dense(4, 32),
         ReLU(),
-        Dense(32, 16),
+        Dense(32, 32),
         ReLU(),
-        Dense(16, 3),
+        Dense(32, 3),
         Softmax()
     ])
 

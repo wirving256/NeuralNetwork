@@ -165,6 +165,13 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
+
+    # This example doesn't need scaler but here is an implementation
+    #scaler = normal_scaler()
+    #scaler.fit_params(X_train)
+    #X_train = scaler.use_trained(X_train)
+    #X_test = scaler.use_trained(X_test)
+
     nn.train(X_train, y_train, epochs=500, lr=0.001)
 
     preds = nn.predict(X_test)
