@@ -1,6 +1,28 @@
 import numpy as np
 
 
+# ===================================================================
+# Standard Normal Distribution Scaler
+
+
+class normal_scaler:
+    def __init__(self):
+        self.s = None
+        self.mu = None
+
+    def fit_params(self, X):
+        if not isinstance(X,np.ndarray):
+            raise TypeError("Expected type np.ndarray")
+        self.mu = np.mean(X, axis=0)
+        self.s = np.std(X, axis=0)
+    
+    def use_trained(self, X):
+        return (X-self.mu)/self.s
+    
+    def return_params(self):
+        return self.s, self.mu
+
+
 # =====================================================================
 # Activations
 
