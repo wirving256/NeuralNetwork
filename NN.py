@@ -205,3 +205,5 @@ if __name__ == "__main__":
         if preds[i] != y_test[i]:
             wrong += 1
     print(f"{wrong} wrong out of {len(preds)}")
+    from sklearn.metrics import classification_report
+    print(classification_report(y_test, preds))
