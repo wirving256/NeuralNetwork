@@ -44,7 +44,7 @@ class Softmax:
         return self.A
 
     def backward(self, dA):
-        return dA  # handled with CE gradient
+        return dA  # handled with cross entropy gradient
 
 
 # ==================================================================
