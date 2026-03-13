@@ -328,7 +328,9 @@ if __name__ == "__main__":
         Flatten(),
         Dense(8*3*3, 64),
         ReLU(),
-        Dense(64, 10),
+        Dense(64, 300),
+        ReLU(),
+        Dense(300, 10),
         Softmax()
     ])
 
