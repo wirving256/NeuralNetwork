@@ -40,7 +40,7 @@ class Softmax:
 
 
 # ================================================================
-# im2col utilities (vectorized convolution)
+# im2col utilities
 
 def im2col(X, KH, KW, stride=1, padding=0):
     N, C, H, W = X.shape
@@ -85,7 +85,7 @@ def col2im(cols, X_shape, KH, KW, stride=1, padding=0):
 
 
 # ================================================================
-# Fully Vectorized Conv2D
+# Conv2D
 
 class Conv2D:
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
