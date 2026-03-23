@@ -137,7 +137,8 @@ class NeuralNetwork:
     def train(self, X, y, epochs=500, lr=0.001, batch_size=32):
         for epoch in range(epochs):
             indices = np.random.permutation(len(X))
-            X, y = X[indices], y[indices]
+            X[:] = X[indices]
+            y[:] = y[indices]
 
             for i in range(0, len(X), batch_size):
                 X_batch = X[i:i+batch_size]
