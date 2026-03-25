@@ -21,18 +21,18 @@ y_test  = y[indices[split:]]
 if __name__ == "__main__":
     MAX_LEN = 100
 
-    tokenizer = nlp.Tokenizer(max_vocab=1000)
-    tokenizer.fit(X_train)
+    tokeniser = nlp.Tokeniser(max_vocab=1000)
+    tokeniser.fit(X_train)
 
-    X_train_enc = tokenizer.encode_batch(X_train, max_len=MAX_LEN)
-    X_test_enc  = tokenizer.encode_batch(X_test,  max_len=MAX_LEN)
+    X_train_enc = tokeniser.encode_batch(X_train, max_len=MAX_LEN)
+    X_test_enc  = tokeniser.encode_batch(X_test,  max_len=MAX_LEN)
 
     embed_dim   = 16
     num_filters = 32
     num_classes = len(authors)
 
     model = nlp.NLPNetwork([
-        nlp.Embedding(tokenizer.vocab_size, embed_dim),
+        nlp.Embedding(tokeniser.vocab_size, embed_dim),
         nlp.Conv1D(embed_dim, num_filters, kernel_size=3),
         nlp.ReLU(),
         nlp.GlobalMaxPool(),

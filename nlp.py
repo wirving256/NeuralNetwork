@@ -6,7 +6,7 @@ from collections import Counter
 # Tokenizer
 
 
-class Tokenizer:
+class Tokeniser:
     def __init__(self, max_vocab=10000, min_freq=1):
         self.max_vocab = max_vocab
         self.min_freq = min_freq
@@ -486,7 +486,7 @@ if __name__ == "__main__":
 
     labels = np.array(([0] * 5 + [1] * 5) * 20)   # 0=positive, 1=negative
 
-    tokenizer = Tokenizer(max_vocab=500)
+    tokenizer = Tokeniser(max_vocab=500)
     tokenizer.fit(texts)
 
     X = tokenizer.encode_batch(texts, max_len=10)   # (n, 10)
@@ -546,7 +546,7 @@ if __name__ == "__main__":
 
     labels = np.array(([0, 0, 1, 0, 0, 1, 0, 0, 1, 0]) * 15)  # 1 = hiking topic
 
-    tokenizer = Tokenizer(max_vocab=200)
+    tokenizer = Tokeniser(max_vocab=200)
     tokenizer.fit(texts)
     X = tokenizer.encode_batch(texts, max_len=12)
 
