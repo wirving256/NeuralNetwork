@@ -1,6 +1,6 @@
 # Nueral Networks
 
-Frameworks to build regressions and classification Neural Networks.
+Frameworks to build natural language processing, regression, classification and convolutional Neural Networks.
 
 ## Setup
 
