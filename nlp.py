@@ -162,6 +162,37 @@ class Conv1D:
 
 
 # ===================================================================
+# 1D Parallel Convolutional layer
+
+class ParallelConv1D:
+    def __init__(self, in_channels, out_channels, kernel_sizes):
+        self.convs = [Conv1D(in_channels, out_channels, k) for k in kernel_sizes]
+        self.pools = [GlobalMaxPool() for _ in kernel_sizes]
+        self._last_out = None
+
+    def forward(self, X):
+        self.X = X
+        outs = []
+        for conv, pool in zip(self.convs, self.pools):
+            z = conv.forward(X)
+            outs.append(pool.forward(z))
+        self._last_out = outs
+        return np.concatenate(outs, axis=1)  # (batch, out_channels * num_kernels)
+
+    def backward(self, dOut):
+        out_channels = dOut.shape[1] // len(self.convs)
+        dX = np.zeros_like(self.X)
+        for i, (conv, pool) in enumerate(zip(self.convs, self.pools)):
+            d_slice = dOut[:, i * out_channels:(i + 1) * out_channels]
+            d_pool  = pool.backward(d_slice)
+            dX     += conv.backward(d_pool)
+        return dX
+
+    def update(self, lr, beta1, beta2, eps, t):
+        for conv in self.convs:
+            conv.update(lr, beta1, beta2, eps, t)
+
+# ===================================================================
 # Global Max Pooling over sequence
 
 

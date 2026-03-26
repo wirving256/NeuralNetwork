@@ -17,4 +17,6 @@ Create a virtual environment then install necessary packages.
 - makeNN.py is an example of creating a Neural network. It uses the wine dataset available from scikit-learn
 - usetrainedNNwine.py is an example of using the dumped trained Neural Network
 - wineNN.joblib is the dumped Neural Network model trained on wine dataset
+- nlp.py is a framework for natural language processing algorithms
+- NLPtest.py is an implementation of the nlp library that 
 - Finally, CNN.py is a Convolutional Neural Network framework

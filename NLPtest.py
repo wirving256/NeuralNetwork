@@ -43,6 +43,17 @@ if __name__ == "__main__":
         nlp.Softmax(),
     ])
 
+#    model = nlp.NLPNetwork([
+#        nlp.Embedding(tokeniser.vocab_size, embed_dim),
+#        nlp.ParallelConv1D(embed_dim, num_filters, kernel_sizes),
+#        nlp.ReLU(),
+#        nlp.Dense(num_filters * len(kernel_sizes), 64),
+#        nlp.ReLU(),
+#        nlp.Dropout(0.3),
+#        nlp.Dense(64, num_classes),
+#        nlp.Softmax(),
+#    ])
+
     model.train(X_train_enc, y_train, epochs=10, lr=0.005, batch_size=16)
 
     preds = model.predict(X_test_enc)
