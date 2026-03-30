@@ -1,6 +1,7 @@
 import nlp
 import pandas as pd
 import numpy as np
+import joblib
 
 df = pd.read_csv('data_for_preprocessing.csv', header=0, index_col=0)
 X = list(df['Text'])
@@ -61,3 +62,5 @@ if __name__ == "__main__":
     print(f"Test accuracy: {acc:.4f}")
     print(f"{int((acc)*len(preds))} correct out of {len(preds)}")
     print(f"{int((1-acc)*len(preds))} wrong out of {len(preds)}")
+    joblib.dump(model, "nlptest.joblib")
+    joblib.dump(tokeniser, "nlptesttokeniser.joblib")
