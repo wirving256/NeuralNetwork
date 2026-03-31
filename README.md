@@ -1,4 +1,4 @@
-# Nueral Networks
+# Neural Networks
 
 Frameworks to build natural language processing, regression, classification and convolutional Neural Networks.
 
